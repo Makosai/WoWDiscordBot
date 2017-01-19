@@ -33,18 +33,19 @@ bot.on("message", function(message) {
         switch (command) {
                 
             case "profile":
-                if(params == null || params.length != 2) {
-                    message.channel.sendMessage("Incorrect parameters: `!profile <name> <realm>`");
+                if(params == null || (params.length != 2 && params.length != 3)) {
+                    message.channel.sendMessage("Incorrect parameters: `!profile <name> <realm> [region Default: US]`");
                     return;
                 }
                 
                 var playerName = params[0].toLowerCase();
                 var realm = params[1].toLowerCase();
+                var region = params.length == 3 ? params[2].toLowerCase() : params.length == 2 ? "us" : null;
                 
                 message.channel.sendMessage("\
-WoWArmory: <" + getArmory(realm, playerName) + ">\n\
-WoWProgress: <" + getProgress(realm, playerName) + ">\n\
-WarcraftLogs: <" + getLogs(realm, playerName) + ">\
+WoWArmory: <" + getArmory(realm, playerName, region) + ">\n\
+WoWProgress: <" + getProgress(realm, playerName, region) + ">\n\
+WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
 ");
                 break;
             
@@ -60,11 +61,11 @@ WarcraftLogs: <" + getLogs(realm, playerName) + ">\
             case "help":
                 message.channel.sendMessage("\
                 `<> = required, [] = optional, | = or.`\n\
-                \n\
-                **Basic Commands**\n\
-                - !hello `Sends a hello message back to the user.`\n\
-                - !profile <name> <realm> `Creates links to the user's armory, wowprogress, and warcraftlogs.`\n\
-                - !gprofile <name> <realm>\
+    \n\
+    **Basic Commands**\n\
+    - !hello `Sends a hello message back to the user.`\n\
+    - !profile <name> <realm> [region Default: US]`Creates links to the user's armory, wowprogress, and warcraftlogs.`\n\
+    - !gprofile <name> <realm> [region Default: US] `Coming soon!`\
                 ");
                 break;
             
@@ -84,16 +85,16 @@ WarcraftLogs: <" + getLogs(realm, playerName) + ">\
     }
 });
 
-function getArmory(realm, playerName) {
-    return "http://www.wowprogress.com/character/us/" + realm + "/" + playerName + "/";
+function getArmory(realm, playerName, region) {
+    return "http://" + region + ".battle.net/wow/en/character/" + realm + "/" + playerName + "/";
 }
 
-function getProgress(realm, playerName) {
-    return "http://us.battle.net/wow/en/character/" + realm + "/" + playerName + "/";
+function getProgress(realm, playerName, region) {
+    return "http://www.wowprogress.com/character/" + region + "/" + realm + "/" + playerName + "/";
 }
 
-function getLogs(realm, playerName) {
-    return "Coming soon!";
+function getLogs(realm, playerName, region) {
+    return "https://www.warcraftlogs.com/rankings/character_name/" + playerName + "/" + realm + "/" + region + "/";
 }
 
 // Essential Functions
