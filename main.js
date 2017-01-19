@@ -44,6 +44,7 @@ bot.on("message", function(message) {
                 
                 message.channel.sendMessage("\
 WoWArmory: <" + getArmory(realm, playerName, region) + ">\n\
+AskMrRobot: <" + getAMR(realm, playerName, region) + ">\n\
 WoWProgress: <" + getProgress(realm, playerName, region) + ">\n\
 WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
 ");
@@ -87,6 +88,10 @@ WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
 
 function getArmory(realm, playerName, region) {
     return "http://" + region + ".battle.net/wow/en/character/" + realm + "/" + playerName + "/";
+}
+
+function getAMR(realm, playerName, region) {
+    return "http://www.askmrrobot.com/wow/gear/" + region + "/" + realm + "/" + playerName + "/";
 }
 
 function getProgress(realm, playerName, region) {
