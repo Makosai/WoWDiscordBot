@@ -27,14 +27,18 @@ bot.on("message", function(message) {
         var params = null;
  
         if (message.content.includes(' ')) {
-            var params = message.content.split(' ').slice(1); // .join(' ') makes it a string with spaces.
+            params = message.content.substring(tempVal, message.content.length).split(',').map(function(item) {
+              return item.trim();
+            });
         }
         
         switch (command) {
                 
             case "profile":
                 if(params == null || (params.length != 2 && params.length != 3)) {
-                    message.channel.sendMessage("Incorrect parameters: `!profile <name> <realm> [region Default: US]`");
+                    message.channel.sendMessage("Incorrect parameters: `!profile <name>, <realm>, [region Default: US]` " + message.content.split(' ', 2)[1] + " -");
+                    console.log(params);
+                    
                     return;
                 }
                 
@@ -87,19 +91,19 @@ WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
 });
 
 function getArmory(realm, playerName, region) {
-    return "http://" + region + ".battle.net/wow/en/character/" + realm + "/" + playerName + "/";
+    return "http://" + region + ".battle.net/wow/en/character/" + realm.replace(/ /g,"-") + "/" + playerName + "/advanced";
 }
 
 function getAMR(realm, playerName, region) {
-    return "http://www.askmrrobot.com/wow/gear/" + region + "/" + realm + "/" + playerName + "/";
+    return "http://www.askmrrobot.com/wow/gear/" + region + "/" + realm.replace(/ /g,"_") + "/" + playerName + "/";
 }
 
 function getProgress(realm, playerName, region) {
-    return "http://www.wowprogress.com/character/" + region + "/" + realm + "/" + playerName + "/";
+    return "http://www.wowprogress.com/character/" + region + "/" + realm.replace(/ /g,"-") + "/" + playerName + "/";
 }
 
 function getLogs(realm, playerName, region) {
-    return "https://www.warcraftlogs.com/rankings/character_name/" + playerName + "/" + realm + "/" + region + "/";
+    return "https://www.warcraftlogs.com/rankings/character_name/" + playerName + "/" + realm.replace(/ /g,"-") + "/" + region + "/";
 }
 
 // Essential Functions
