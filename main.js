@@ -1,12 +1,14 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 
-const token = "";
+var token = ""; // Put your token in here or in the token.txt file.
 
 var debugging = false;
 
+const fs = require("fs");
+
 bot.on('ready', () => {
-  console.log('I am ready!');
+    console.log('I am ready!');
 });
 
 bot.on("message", function(message) {
@@ -116,4 +118,9 @@ Array.prototype.myJoin = function(seperator, start, end) {
   return this.slice(start, end).join(seperator);
 };
 
-bot.login(token);
+fs.readFile('token.txt', 'utf8', function(err, contents) {
+    if(contents.length > 0)
+        token = contents;
+
+    bot.login(token);
+});
