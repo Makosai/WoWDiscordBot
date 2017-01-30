@@ -121,9 +121,36 @@ Array.prototype.myJoin = function(seperator, start, end) {
   return this.slice(start, end).join(seperator);
 };
 
-fs.readFile('token.txt', 'utf8', function(err, contents) {
-    if(contents.length > 0)
-        token = contents;
+// http://stackoverflow.com/a/29016268
+function checkForFile(fileName,callback)
+{
+    fs.exists(fileName, function (exists) {
+        if(exists)
+        {
+            callback();
+        }else
+        {
+            fs.writeFile(fileName, token, {flag: 'wx'}, function (err, data) 
+            { 
+                callback();
+            })
+        }
+    });
+}
 
-    bot.login(token);
+
+
+
+
+
+
+
+// Login
+checkForFile('token.txt', function() {
+    fs.readFile('token.txt', 'utf8', function(err, contents) {
+        if(contents.length > 0)
+            token = contents;
+
+        bot.login(token);
+    });
 });
