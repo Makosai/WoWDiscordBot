@@ -61,7 +61,8 @@ WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
                 break;
 
             case "logs":
-                 message.channel.sendMessage("This is temporary. The logs will be specifically for this raid and only this raid for now: https://www.warcraftlogs.com/guilds/reportslist/213546/");
+                message.channel.sendMessage("This is temporary. The logs will be specifically for this raid and only this raid for now: https://www.warcraftlogs.com/guilds/reportslist/213546/");
+                break;
 
             // hello
             case "hello":
