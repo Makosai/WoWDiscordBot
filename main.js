@@ -63,9 +63,11 @@ WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
                 
             case "attendance":
                 message.channel.sendMessage("Warcraft Logs Attendance for *" + guildName + "*: https://www.warcraftlogs.com/guilds/attendance/213546");
+                break;
 
             case "trials":
                 message.channel.sendMessage("*" + guildName + "* requires trial members to meet a certain quota to become raiders. You can check your attendance progress here: https://www.warcraftlogs.com/guilds/attendance/213546");
+                break;
             
             case "logs":
                 message.channel.sendMessage("All Warcraft Logs for *" + guildName + "*: https://www.warcraftlogs.com/guilds/reportslist/213546/");
