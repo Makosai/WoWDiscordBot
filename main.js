@@ -85,7 +85,11 @@ WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
     **Basic Commands**\n\
     - !hello `Sends a hello message back to the user.`\n\
     - !profile <name> <realm> [region Default: US]`Creates links to the user's armory, wowprogress, and warcraftlogs.`\n\
-    - !gprofile <name> <realm> [region Default: US] `Coming soon!`\
+    - !gprofile <name> <realm> [region Default: US] `Coming soon!`\n\
+    - !attendance `Links to the WoWLogs attendance for the guild.`\n\
+    - !trials `Informs trials how to become raiders.`\n\
+    - !logs `Links to all of the WoWLogs for the guild.`\n\
+    - !help `You're stupid.`\
                 ");
                 break;
             
