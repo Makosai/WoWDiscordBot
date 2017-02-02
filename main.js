@@ -6,6 +6,7 @@ var token = ""; // Put your token in here or in the token.txt file.
 var debugging = false;
 
 const fs = require("fs");
+const guildName = "R E D E M P T I O N";
 
 bot.on('ready', () => {
     console.log('I am ready!');
@@ -59,9 +60,15 @@ WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
             case "gprofile":
                 message.channel.sendMessage("Coming soon.");
                 break;
+                
+            case "attendance":
+                message.channel.sendMessage("Warcraft Logs Attendance for *" + guildName + "*: https://www.warcraftlogs.com/guilds/attendance/213546");
 
+            case "trials":
+                message.channel.sendMessage("*" + guildName + "* requires trial members to meet a certain quota to become raiders. You can check your attendance progress here: https://www.warcraftlogs.com/guilds/attendance/213546");
+            
             case "logs":
-                message.channel.sendMessage("This is temporary. The logs will be specifically for this raid and only this raid for now: https://www.warcraftlogs.com/guilds/reportslist/213546/");
+                message.channel.sendMessage("All Warcraft Logs for *" + guildName + "*: https://www.warcraftlogs.com/guilds/reportslist/213546/");
                 break;
 
             // hello
