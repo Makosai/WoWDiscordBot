@@ -6,7 +6,7 @@ var token = ""; // Put your token in here or in the token.txt file.
 var debugging = false;
 
 const fs = require("fs");
-const guildName = "R E D E M P T I O N";
+const guildName = "R E D E M P T I O N"; // Temporary until the commands accept guild names.
 
 bot.on('ready', () => {
     console.log('I am ready!');
@@ -27,12 +27,22 @@ bot.on("message", function(message) {
     if (message.content.charAt(0) === "!") {
         var tempVal = message.content.indexOf(' ');
         var command = message.content.substring(1, tempVal == -1 ? message.content.length : tempVal);
-        var params = null;
+        var params = [];
  
-        if (message.content.includes(' ')) {
-            params = message.content.substring(tempVal, message.content.length).split(',').map(function(item) {
+        // Determine if the message has params after the command
+        if (message.content.includes(' ') && message.content.includes('-')) {
+            var tempParams = message.content.substring(tempVal, message.content.length).split(',').map(function(item) {
               return item.trim();
             });
+            
+            // Split the <name>-<realm>
+            params[0] = tempParams[0].split('-')[0];
+            params[1] = tempParams[0].split('-')[1];
+            
+            // Get the region, if any
+            if(tempParams.length > 1) {
+                params[2] = tempParams[1];
+            }
         }
         
         switch (command) {
@@ -84,8 +94,8 @@ WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
     \n\
     **Basic Commands**\n\
     - !hello `Sends a hello message back to the user.`\n\
-    - !profile <name> <realm> [region Default: US]`Creates links to the user's armory, wowprogress, and warcraftlogs.`\n\
-    - !gprofile <name> <realm> [region Default: US] `Coming soon!`\n\
+    - !profile <name>-<realm> [region Default: US]`Creates links to the user's armory, wowprogress, and warcraftlogs.`\n\
+    - !gprofile <name>-<realm> [region Default: US] `Coming soon!`\n\
     - !attendance `Links to the WoWLogs attendance for the guild.`\n\
     - !trials `Informs trials how to become raiders.`\n\
     - !logs `Links to all of the WoWLogs for the guild.`\n\
@@ -139,11 +149,9 @@ Array.prototype.myJoin = function(seperator, start, end) {
 function checkForFile(fileName,callback)
 {
     fs.exists(fileName, function (exists) {
-        if(exists)
-        {
+        if(exists) {
             callback();
-        }else
-        {
+        } else {
             fs.writeFile(fileName, token, {flag: 'wx'}, function (err, data) 
             { 
                 callback();
@@ -168,3 +176,24 @@ checkForFile('token.txt', function() {
         bot.login(token);
     });
 });
+
+
+/**
+
+Should replace the nasty use of splits and stuff for getting commands in the future:
+const PLAYER_REGEX = /([a-zA-Z]+)\-([a-zA-Z]+)(\s*,\s*([a-zA-z]+))?/;
+
+function parse_player_string(player_string) {
+    let match = player_string.match(PLAYER_REGEX);
+    if (!match) {
+        return null;
+    } else {
+        return {
+            name: match[1],
+            server: match[2],
+            code: match[4]
+        }
+    }
+}
+
+**/
