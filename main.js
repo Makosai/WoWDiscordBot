@@ -64,7 +64,7 @@ WoWArmory: <" + getArmory(realm, playerName, region) + ">\n\
 AskMrRobot: <" + getAMR(realm, playerName, region) + ">\n\
 WoWProgress: <" + getProgress(realm, playerName, region) + ">\n\
 WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\n\
-Kill Points: <" + getKPs(realm, player, region) + ">\
+Kill Points: <" + getKPs(realm, playerName, region) + ">\
 ");
                 break;
             
@@ -136,8 +136,8 @@ function getLogs(realm, playerName, region) {
     return "https://www.warcraftlogs.com/rankings/character_name/" + playerName + "/" + realm.replace(/ /g,"-") + "/" + region + "/";
 }
 
-function getKPs(realm, playername, region) {
-    return "https://rsuurd.github.io/killpoints/#" + region + "/" + realm + "/" + playername + "/";
+function getKPs(realm, playerName, region) {
+    return "https://rsuurd.github.io/killpoints/#" + region + "/" + realm + "/" + playerName + "/";
 }
 
 // Essential Functions
