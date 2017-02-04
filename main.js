@@ -49,7 +49,7 @@ bot.on("message", function(message) {
                 
             case "profile":
                 if(params == null || (params.length != 2 && params.length != 3)) {
-                    message.channel.sendMessage("Incorrect parameters: `!profile <name>-<realm>, [region Default: US]`";
+                    message.channel.sendMessage("Incorrect parameters: `!profile <name>-<realm>, [region Default: US]`");
                     if(debugging)
                         console.log(params);
                     return;
