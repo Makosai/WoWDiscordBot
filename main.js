@@ -49,9 +49,9 @@ bot.on("message", function(message) {
                 
             case "profile":
                 if(params == null || (params.length != 2 && params.length != 3)) {
-                    message.channel.sendMessage("Incorrect parameters: `!profile <name>, <realm>, [region Default: US]` " + message.content.split(' ', 2)[1] + " -");
-                    console.log(params);
-                    
+                    message.channel.sendMessage("Incorrect parameters: `!profile <name>-<realm>, [region Default: US]`";
+                    if(debugging)
+                        console.log(params);
                     return;
                 }
                 
@@ -63,7 +63,8 @@ bot.on("message", function(message) {
 WoWArmory: <" + getArmory(realm, playerName, region) + ">\n\
 AskMrRobot: <" + getAMR(realm, playerName, region) + ">\n\
 WoWProgress: <" + getProgress(realm, playerName, region) + ">\n\
-WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\
+WarcraftLogs: <" + getLogs(realm, playerName, region) + ">\n\
+Kill Points: <" + getKPs(realm, player, region) + ">\
 ");
                 break;
             
@@ -133,6 +134,10 @@ function getProgress(realm, playerName, region) {
 
 function getLogs(realm, playerName, region) {
     return "https://www.warcraftlogs.com/rankings/character_name/" + playerName + "/" + realm.replace(/ /g,"-") + "/" + region + "/";
+}
+
+function getKPs(realm, playername, region) {
+    return "https://rsuurd.github.io/killpoints/#" + region + "/" + realm + "/" + playername + "/";
 }
 
 // Essential Functions
