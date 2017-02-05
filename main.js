@@ -20,7 +20,7 @@ bot.on("message", function(message) {
     }
 
     // Make sure that only commands entered in #bot are registered.
-    if (!(message.channel.name === "bot"))
+    if (!(message.channel.name === "bot") && !(message.channel.name === "barrenschat"))
         return;
 
     // ! command list
