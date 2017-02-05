@@ -85,7 +85,7 @@ Kill Points: <" + getKPs(realm, playerName, region) + ">\
                 break;
 
             case "app":
-                messsage.channel.sendMessage("***" + guildName + "*** Guild Application: https://goo.gl/UzYOOp");
+                message.channel.sendMessage("***" + guildName + "*** Guild Application: https://goo.gl/UzYOOp");
                 break;
                 
             // hello
