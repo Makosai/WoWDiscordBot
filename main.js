@@ -84,6 +84,10 @@ Kill Points: <" + getKPs(realm, playerName, region) + ">\
                 message.channel.sendMessage("All Warcraft Logs for ***" + guildName + "*** : https://www.warcraftlogs.com/guilds/reportslist/213546/");
                 break;
 
+            case "app":
+                messsage.channel.sendMessage("***" + guildName + "*** Guild Application: https://goo.gl/UzYOOp");
+                break;
+                
             // hello
             case "hello":
                 message.channel.sendMessage("Hello, " + message.author.username + ".");
