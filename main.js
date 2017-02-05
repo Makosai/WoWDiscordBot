@@ -104,6 +104,7 @@ Kill Points: <" + getKPs(realm, playerName, region) + ">\
     - !attendance `Links to the WoWLogs attendance for the guild.`\n\
     - !trials `Informs trials how to become raiders.`\n\
     - !logs `Links to all of the WoWLogs for the guild.`\n\
+    - !app `Links to the " + guildName + " guild application.`\n\
     - !help `You're stupid.`\
                 ");
                 break;
