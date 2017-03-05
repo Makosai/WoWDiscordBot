@@ -110,7 +110,7 @@ Kill Points: <" + getKPs(realm, playerName, region) + ">\
                 break;
             
             default:
-                message.channel.sendMessage("That is not a command.");
+                //message.channel.sendMessage("That is not a command.");
                 break;
         }
         
