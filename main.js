@@ -6,10 +6,10 @@ var token = ""; // Put your token in here or in the token.txt file.
 var debugging = false;
 
 const fs = require("fs");
-const guildName = "R E D E M P T I O N"; // Temporary until the commands accept guild names.
+const guildName = "Born From Insanity"; // Temporary until the commands accept guild names.
 
 bot.on('ready', () => {
-    console.log('I am ready!');
+    console.log('WoWDisCordBot Started!');
 });
 
 bot.on("message", function(message) {
@@ -73,15 +73,15 @@ Kill Points: <" + getKPs(realm, playerName, region) + ">\
                 break;
                 
             case "attendance":
-                message.channel.sendMessage("Warcraft Logs Attendance for ***" + guildName + "*** : https://www.warcraftlogs.com/guilds/attendance/213546/");
+                message.channel.sendMessage("Warcraft Logs Attendance for ***" + guildName + "*** : https://www.warcraftlogs.com/guilds/attendance/258317/");
                 break;
 
             case "trials":
-                message.channel.sendMessage("***" + guildName + "*** requires trial members to meet a certain quota to become raiders. You can check your attendance progress here: https://www.warcraftlogs.com/guilds/attendance/213546/");
+                message.channel.sendMessage("***" + guildName + "*** requires trial members to meet a certain quota to become raiders. You can check your attendance progress here: https://www.warcraftlogs.com/guilds/attendance/258317/");
                 break;
             
             case "logs":
-                message.channel.sendMessage("All Warcraft Logs for ***" + guildName + "*** : https://www.warcraftlogs.com/guilds/reportslist/213546/");
+                message.channel.sendMessage("All Warcraft Logs for ***" + guildName + "*** : https://www.warcraftlogs.com/guilds/reportslist/258317/");
                 break;
 
             case "app":
@@ -103,7 +103,7 @@ Kill Points: <" + getKPs(realm, playerName, region) + ">\
     - !gprofile <name>-<realm> [region Default: US] `Coming soon!`\n\
     - !attendance `Links to the WoWLogs attendance for the guild.`\n\
     - !trials `Informs trials how to become raiders.`\n\
-    - !logs `Links to all of the WoWLogs for the guild.`\n\
+    - !logs `Links to all of the WoWLogs for the guild. Must be registered with Battle.net login to view.`\n\
     - !app `Links to the " + guildName + " guild application.`\n\
     - !help `You're stupid.`\
                 ");
